@@ -1,0 +1,9 @@
+{
+  "version": "2.0",
+  "fields": {
+    "id": "string",
+    "total_amount": "float",
+    "status": "string",
+    "currency": "string"
+  }
+}
