@@ -1,22 +1,40 @@
 # RevShield AI 
 
-> **Enterprise Shift-Left Schema Guardrail & Revenue Operations Protection Engine**
+> **RevShield AI — CRM Schema‑Drift & Integration Reliability Engine**  
+> *A shift‑left guardrail that prevents breaking CRM and revenue‑ops integrations.*
 
-[![CI Pipeline](https://github.com/your-username/revshield-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/revshield-ai/actions)
+[![CI Pipeline](https://github.com/vaishnavilanda/revshield-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/vaishnavilanda/revshield-ai/actions)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Powered by Gemini AI](https://img.shields.io/badge/AI-Google%20Gemini%202.5%20Flash-orange.svg)](https://ai.google.dev/)
 
 ---
 
-##  TL;DR 
+## Key Details
+
+* **Repository:** `revshield-ai`
+* **Primary Language:** Python 3.10+
+* **AI Model:** Google Gemini 2.5 Flash API
+* **CI/CD Integration:** GitHub Actions (`.github/workflows/ci.yml`)
+* **Test Framework:** `pytest`
+* **Exit Strategy:** `sys.exit(1)` on high/critical schema deviations
+
+---
+
+## TL;DR 
 
 | Metric / Question | Project Answer |
 | :--- | :--- |
-| **What does this solve?** | Prevents developers from pushing code changes that break downstream CRMs (HubSpot, Salesforce) and revenue attribution pipelines. |
+| **What does this solve?** | Helps prevent developers from merging changes that break downstream CRM and revenue‑ops integrations. |
 | **Key Technologies** | Python 3.10+, Pytest, GitHub Actions CI/CD, Google Gemini 2.5 Flash API, JSON Schema. |
-| **Primary Achievement** | Built an automated "Shift-Left" guardrail using **deterministic set theory diffing** and **hard CI build stops (`sys.exit(1)`)**, paired with **LLM-driven impact analysis**. |
+| **Primary Achievement** | Implemented a shift‑left guardrail using deterministic set‑based schema diffing and hard CI build failures (`sys.exit(1)`), paired with **LLM-driven impact analysis**. |
 | **Core Architecture** | **Spot** (Schema Diff Engine) → **Stop** (CI/CD Quality Gate) → **Solve** (Gemini AI Migration Guide). |
+
+---
+
+##  Prototype Scope & Credibility Note
+
+> **Prototype Scope:** This repository is a portfolio prototype that demonstrates the architecture and patterns for a production schema‑guardrail system. It uses sample schemas and a simulated CI/CD pipeline; it is not yet deployed in a live enterprise environment.
 
 ---
 
@@ -35,35 +53,34 @@ In high-velocity software engineering teams, developers frequently update API pa
 ##  The "Spot, Stop, Solve" Framework
 
 ```text
-                   +-----------------------------------+
-                   |    Developer Opens Pull Request   |
-                   +-----------------------------------+
-                                     │
-                                     ▼
+                    +-----------------------------------+
+                    |   Developer Opens Pull Request    |
+                    +-----------------------------------+
+                                    │
+                                    ▼
 +-----------------------------------------------------------------------------------+
-| 1. SPOT (Deterministic Schema Engine)                                             |
+| 1. SPOT — Schema Diff Engine                                                      |
 |    - Parses Baseline (v1) vs Proposed (v2) JSON Schemas in Python                 |
 |    - Applies Set Difference Mathematics to detect Added, Removed, and Mutated Keys|
 +-----------------------------------------------------------------------------------+
-                                     │
-                                     ▼
+                                    │
+                                    ▼
 +-----------------------------------------------------------------------------------+
-| 2. STOP (CI/CD Hard Gatekeeper)                                                   |
+| 2. STOP — CI/CD Hard Gate                                                         |
 |    - Evaluates Risk Matrix: LOW (🟢), HIGH (🟡), CRITICAL (🔴)                    |
-|    - Triggers sys.exit(1) non-zero exit code on High & Critical violations       |
+|    - Triggers sys.exit(1) non-zero exit code on High & Critical violations        |
 |    - Hard-blocks GitHub Actions deployment pipeline with a red cross (❌)         |
 +-----------------------------------------------------------------------------------+
-                                     │
-                                     ▼
+                                 ▼
 +-----------------------------------------------------------------------------------+
-| 3. SOLVE (Gemini AI Incident Mitigation)                                          |
+| 3. SOLVE — AI Migration Guide                                                     |
 |    - Constructs structured JSON delta payload for Google Gemini 2.5 Flash         |
 |    - Generates step-by-step developer migration steps & SDK fallback advice       |
 |    - Features a Heuristic Local Fallback Engine if network/API keys are missing   |
 +-----------------------------------------------------------------------------------+
----------------------------------------------
- Key Technical Modules
-----------------------------------------------
+-----------------------------------------------------------------------------------------
+Key Technical Modules
+------------------------------------------------------------------------------------------
 1. Set-Based Diff Engine (src/main.py)
 Unlike slow nested iteration, RevShield uses Python set theory (set(v1.keys()) - set(v2.keys())) to detect key additions, deletions, and type shifts in sub-millisecond execution time.
 
@@ -75,17 +92,27 @@ Unlike slow nested iteration, RevShield uses Python set theory (set(v1.keys()) -
 🔴 CRITICAL (Key Deletion): Required payload fields deleted. Instantly fails CI/CD via sys.exit(1).
 
 3. Gemini AI Integration & Graceful Degradation
-LLM Remediation: Formats exact code diffs and queries gemini-2.5-flash to output plain-English developer impact statements.
+LLM remediation: Sends structured schema deltas to Gemini and returns plain‑English impact statements and migration steps.
 
 Fault-Tolerant Fallback: If GEMINI_API_KEY is absent or encounters network throttling, RevShield gracefully falls back to a local heuristic template engine—ensuring the build pipeline remains reliable.
 
 4. Continuous Integration (.github/workflows/ci.yml)
 Runs an automated containerized test suite via pytest on every GitHub push or pull_request to ensure zero breaking contract shifts hit the main branch.
------------------------------------------------------------
+=========================
+ Limitations
+=========================
+Only supports JSON Schema–style inputs, not full OpenAPI/Swagger specs.
+
+Focused on payload contracts, not full end‑to‑end integration tests with real HubSpot/Salesforce sandboxes.
+
+Risk matrix is rule‑based; no ML model trained on historical incidents.
+
+Documentation and migration guides are AI‑generated drafts; human review is required.
+===================================================
  Quickstart & Setup Guide
-------------------------------------------------------------
+===================================================
  1. Clone repository & set up environment
-git clone https://github.com/your-username/revshield-ai.git
+git clone [https://github.com/vaishnavilanda/revshield-ai.git](https://github.com/vaishnavilanda/revshield-ai.git)
 cd revshield-ai
 python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
@@ -98,7 +125,7 @@ python src/main.py
 PYTHONPATH=. pytest tests/ -v
 Terminal Inspection & AI Report
 ================================================================================
-                       REVSHIELD AI - SCHEMA GUARDRAIL                          
+                        REVSHIELD AI - SCHEMA GUARDRAIL                        
 ================================================================================
 [+] Loading Schemas...
     Baseline (v1): schemas/v1_schema.json
@@ -130,5 +157,3 @@ Recommended Migration Strategy:
 
 --------------------------------------------------------------------------------
 ❌ DEPLOYMENT BLOCKED: Exiting with status code 1.
-
-
